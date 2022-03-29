@@ -1,0 +1,26 @@
+<tr *ngIf="roles">
+  <td>{{roles.role}}</td>
+  <td >{{roles.description}}</td>
+  <td>
+    <button type="button"  class="btn btn-success" [routerLink]="['update', roles.codeRole]">
+      <span >Update</span>
+
+
+    </button>
+  </td>
+
+  <td>
+    <button  class="btn btn-danger"  (click)="onDeleteRoles(roles.codeRole)">
+      <span class="fa fa-trash-o">Löchen</span>
+    </button>
+
+  </td>
+  <td>
+    <button  class="btn btn-info"  [routerLink]="['details', roles.codeRole]">
+      <span class="fa fa-edit">Details</span>
+    </button>
+
+  </td>
+
+</tr>
+

@@ -1,0 +1,9 @@
+<table class="table table-striped table-dark" *ngIf="kurse | async as kurseData">
+  <thead>
+  <th> <h4> Sprache</h4></th> <th> <h4> Anfangszeit </h4></th>  <th> <h4> Ende</h4></th><th> <h4> Programme</h4></th><th> <h4> Lehrer/in</h4></th>
+  <th> <h4> Betroffene Niveaus</h4></th>
+  <th> <h4> Räume</h4></th>  <th> <h4> Handlungen</h4></th>
+  </thead>
+
+  <app-item-kurs [kurs]="kurs" *ngFor="let kurs of kurseData"  style="display: contents"></app-item-kurs>
+</table>

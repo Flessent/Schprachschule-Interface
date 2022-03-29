@@ -1,0 +1,33 @@
+<tr *ngIf="sekretaer">
+  <td>{{sekretaer.nom}}</td>
+  <td>{{sekretaer.prenom}}</td>
+  <td>{{sekretaer.dateNaissance | date : 'dd.MM.YYYY'}}</td>
+  <td>{{sekretaer.dateDebutActiviteOuCours | date : 'dd.MM.YYYY'}}</td>
+  <td>{{sekretaer.numTel}}</td>
+  <td>{{sekretaer.salaire}}</td>
+  <td>{{sekretaer.nbreMoisExperiences}} Monate</td>
+  <td>{{sekretaer.languesSekretaer}}</td>
+
+
+  <td>
+    <button type="button"  class="btn btn-success" [routerLink]="['update', sekretaer.username]">
+      <span >Update</span>
+
+
+    </button>
+  </td>
+
+  <td>
+    <button  class="btn btn-danger"  (click)="onDeleteSekretaer(sekretaer.username)">
+      <span class="fa fa-trash-o">Löchen</span>
+    </button>
+
+  </td>
+  <td>
+    <button  class="btn btn-info"  [routerLink]="['details', sekretaer.username]">
+      <span class="fa fa-edit">Details</span>
+    </button>
+
+  </td>
+
+</tr>

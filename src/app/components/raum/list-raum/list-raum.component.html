@@ -1,0 +1,8 @@
+<table class="table table-striped table-dark" *ngIf="raume | async as raumeData">
+  <thead>
+  <th> <h4> Raume</h4></th> <th> <h4> verfügbare Plätze</h4></th>  <th> <h4> Standort</h4></th> <th> <h4> Code des Raums</h4></th><th> <h4> Handlungen</h4></th>
+  </thead>
+
+  <app-item-raum [raum]="itemRaum" *ngFor="let itemRaum of raumeData"  style="display: contents"></app-item-raum>
+</table>
+

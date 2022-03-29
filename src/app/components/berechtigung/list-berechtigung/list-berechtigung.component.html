@@ -1,0 +1,8 @@
+<table class="table table-striped table-dark" *ngIf="roles | async as rolesData">
+  <thead>
+  <th> <h4> Berechtigung</h4></th> <th> <h4> Beschreibung</h4></th> <th> <h4> Handlungen</h4></th>
+  </thead>
+
+  <app-item-berechtigung [roles]="itemRoles" *ngFor="let itemRoles of rolesData"  style="display: contents"></app-item-berechtigung>
+</table>
+

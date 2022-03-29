@@ -1,0 +1,10 @@
+<div> <h2> Details über ein bestimmtes Sprachniveau </h2> </div>
+<div *ngIf="niveau | async as niveauData">
+  <div>Code von diesem Niveau : {{ niveauData.codeNiveau }}</div>
+  <div>Niveau: {{ niveauData.libelle }}</div>
+  <div>Price: {{ niveauData.prix }} €</div>
+  <div>Anfangsdate: {{ niveauData.date_debut | date : 'dd.MM.yyyy' }}</div>
+  <div>Frist: {{ niveauData.date_fin | date : 'dd.MM.yyyy' }}</div>
+
+</div>
+<div><a [routerLink]="['/willkommen/niveau/liste-niveaus']">Zurück zur Liste der Niveaus</a></div>

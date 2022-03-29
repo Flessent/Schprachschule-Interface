@@ -1,0 +1,33 @@
+<tr *ngIf="betreuer">
+  <td>{{betreuer.nom}}</td>
+  <td>{{betreuer.prenom}}</td>
+  <td>{{betreuer.dateNaissance | date : 'dd.MM.YYYY'}}</td>
+  <td>{{betreuer.dateDebutActiviteOuCours | date : 'dd.MM.YYYY'}}</td>
+  <td>{{betreuer.numTel}}</td>
+  <td>{{libelleSpr}}</td>
+  <td>{{libelleNiv}}</td>
+
+
+  <td>
+    <button type="button"  class="btn btn-success" [routerLink]="['update', betreuer.username]">
+      <span >Update</span>
+
+
+    </button>
+  </td>
+
+  <td>
+    <button  class="btn btn-danger"  (click)="onDeleteBetreuer(betreuer.username)">
+      <span class="fa fa-trash-o">Löchen</span>
+    </button>
+
+  </td>
+  <td>
+    <button  class="btn btn-info"  [routerLink]="['details', betreuer.username]">
+      <span class="fa fa-edit">Details</span>
+    </button>
+
+  </td>
+
+</tr>
+

@@ -1,0 +1,99 @@
+
+<div class="container col-lg-6"  *ngIf="updateKursForm">
+  <h1 class="text-center">Update des Kurses</h1>
+  <div class="card" >
+    <div class="card-body">
+      <form class="form-group" [formGroup]="updateKursForm"  (ngSubmit)="onUpdateKurs()">
+
+        <mat-form-field appearance="fill">
+          <mat-label>Anfangszeit des Kurses</mat-label>
+          <input matInput [ngxMatDatetimePicker]="$any(pickerFrom)"  placeholder="Anfangszeit des Kurses" formControlName="heure_debut">
+
+
+          <mat-datepicker-toggle matSuffix [for]="$any(pickerFrom)"></mat-datepicker-toggle>
+
+          <ngx-mat-datetime-picker #pickerFrom [enableMeridian]="true"></ngx-mat-datetime-picker>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Ende des Kurses</mat-label>
+          <input matInput [ngxMatDatetimePicker]="pickerTo"placeholder="Ende des Kurses"formControlName="heure_fin">
+
+          <mat-datepicker-toggle matSuffix [for]="$any(pickerTo)"></mat-datepicker-toggle>
+
+          <ngx-mat-datetime-picker #pickerTo [enableMeridian]="true"></ngx-mat-datetime-picker>
+
+          <mat-error *ngIf="form['heure_debut'].errors?.['matStartDateInvalid']">Invalid start date</mat-error>
+          <mat-error *ngIf="form['heure_fin'].errors?.['matEndDateInvalid']">Invalid end date</mat-error>
+        </mat-form-field>
+
+        <div >
+
+          <mat-form-field *ngIf="listSprachen | async as sprachenData" >
+            <mat-select  placeholder="Angabe der Sprache"   formControlName="langue" >
+              <mat-option value="{{itemSprache.libelle}}" (click)="onSp(itemSprache.libelle)" *ngFor="let itemSprache of sprachenData">{{itemSprache.libelle}}</mat-option>
+
+            </mat-select>
+            <mat-error *ngIf="updateKursForm.controls['langue'].hasError('required')">
+              {{ updateKursForm.controls['langue'].errors | json }}
+
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field *ngIf="listRaume | async as raumeData" >
+            <mat-select  placeholder="Angabe des Raumes"  formControlName="raume" multiple>
+              <mat-option value="{{itemRaum.nom_raume}}" *ngFor="let itemRaum of raumeData">{{itemRaum.nom_raume}}</mat-option>
+
+            </mat-select>
+            <mat-error *ngIf="updateKursForm.controls['raume'].hasError('required')">
+              {{ updateKursForm.controls['raume'].errors | json }}
+
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div>
+
+          <mat-form-field *ngIf="niveausByLibelleSprache | async as niveauData" >
+            <mat-label class="col-lg-6">Welche Niveaus sind für diesen Kurs betroffen ?</mat-label>
+
+            <mat-select  placeholder="Betroffene Niveaus "   formControlName="niveau" multiple>
+
+              <mat-option value="{{itemNiveau.libelle}}" *ngFor="let itemNiveau of niveauData">{{itemNiveau.libelle}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="updateKursForm.controls['niveau'].hasError('required')">
+              {{ updateKursForm.controls['niveau'].errors | json }}
+
+            </mat-error>
+          </mat-form-field>
+
+        </div>
+        <div class="form-group mt-3">
+          <label for="professeur">Lehrer :</label>
+          <input type="area" id="professeur" formControlName="professeur"  class="form-control"
+                 [ngClass]="{ 'is-invalid': submitted && form['professeur'].errors }" />
+          <div *ngIf="submitted && form['professeur'].errors" class="invalid-feedback">
+            <div *ngIf="form['professeur'].errors['required']">
+              Name des Lehrers  ist erforderlich !
+            </div>
+          </div>
+        </div>
+        <div class="form-group mt-3">
+          <label for="au_programme">Programm : </label>
+          <textarea type="area" id="au_programme" formControlName="au_programme"  placeholder="Was soll heute vom Lehrer unterrichtet werden ?" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && form['au_programme'].errors }" ></textarea>
+          <div *ngIf="submitted && form['au_programme'].errors" class="invalid-feedback">
+            <div *ngIf="form['au_programme'].errors['required']">
+              Das Programm  ist erforderlich
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-3 d-flex justify-content-between">
+          <button type="submit" [disabled]="!updateKursForm.valid" class="btn btn-success">Bestätigen</button>
+
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<tr *ngIf="kurs">
+  <td>{{libel}}</td>
+  <td >{{kurs.heure_debut | date : 'dd.MM.YYYY  HH:mm:ss'}} </td>
+  <td>{{kurs.heure_fin | date : 'dd.MM.YYYY  HH:mm:ss' }}</td>
+  <td>{{kurs.au_programme}}</td>
+  <td>{{kurs.professeur}}</td>
+  <td>{{libelleNiv}}</td>
+  <td>{{nomRaum}}</td>
+
+  <td>
+    <button type="button"  class="btn btn-success" [routerLink]="['update', kurs.codeKurs]">
+      <span >Update</span>
+
+
+    </button>
+  </td>
+
+  <td>
+    <button  class="btn btn-danger"  (click)="onDeleteKurs(kurs.codeKurs)">
+      <span class="fa fa-trash-o">Löchen</span>
+    </button>
+
+  </td>
+  <td>
+    <button  class="btn btn-info"  [routerLink]="['details', kurs.codeKurs]">
+      <span class="fa fa-edit">Details</span>
+    </button>
+
+  </td>
+
+</tr>
+

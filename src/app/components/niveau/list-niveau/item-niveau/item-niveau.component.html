@@ -1,0 +1,30 @@
+<tr *ngIf="niveau">
+  <td>{{niveau.libelle}}</td>
+  <td >{{niveau.prix}} €</td>
+  <td>{{niveau.date_debut | date : 'dd.MM.yyyy'}}</td>
+  <td>{{niveau.date_fin | date : 'dd.MM.yyyy'}}</td>
+  <td>{{libelleSprach}}</td>
+
+  <td>
+    <button type="button"  class="btn btn-success" [routerLink]="['update', niveau.codeNiveau]">
+      <span >Update</span>
+
+
+    </button>
+  </td>
+
+  <td>
+    <button  class="btn btn-danger"  (click)="onDeleteNiveau(niveau.codeNiveau)">
+      <span class="fa fa-trash-o">Löchen</span>
+    </button>
+
+  </td>
+  <td>
+    <button  class="btn btn-info"  [routerLink]="['details', niveau.codeNiveau]">
+      <span class="fa fa-edit">Details</span>
+    </button>
+
+  </td>
+
+</tr>
+

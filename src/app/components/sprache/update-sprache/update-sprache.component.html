@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="card card-success">
+    <ng-container *ngIf="updateSpracheForm">
+
+
+      <div class="card-header">
+        <h3 class="card-title">{{Titel1}}</h3>
+      </div>
+      <!-- /.card-header -->
+      <!-- form start -->
+      <ng-container >
+        <form class="form-horizontal" [formGroup]="updateSpracheForm" (ngSubmit)="onSubmit()">
+          <div class="card-body">
+            <div class="form-group row">
+              <label for="libelle" class="col-sm-2 col-form-label">Sprache :</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" formControlName="libelle" id="libelle" placeholder="Deutsch/Englisch/Italien...">
+              </div>
+            </div>
+
+
+
+
+
+
+            <div class="form-group row">
+              <label for="intensivkurs" class="col-sm-2 col-form-label">Intensivkurs :</label>
+              <div class="col-sm-10">
+                <input  type="button"  (click)="onIntensiv()" id="intensivkurs" [ngClass]="intensivKurs  ?'btn btn-success' : 'btn btn-danger'" formControlName="intensive"   [value]="valeur" />
+              </div>
+            </div>
+
+          </div>
+          <div class="card-footer">
+            <button type="submit" class="btn btn-success">Änderungsumsetzung</button> &nbsp; &nbsp; &nbsp; &nbsp;
+            <button type="button" class="btn btn-danger float-right">Abbrechen</button>
+          </div>
+        </form>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>

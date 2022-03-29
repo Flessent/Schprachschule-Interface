@@ -1,0 +1,216 @@
+<mat-grid-list cols="3" gutterSize="15px" rowHeight="75px" class="form-group" [formGroup]="gemeinsameInfosFormGroup">
+
+  <mat-grid-tile>
+    <div class="form-group">
+      <label for="nom">Name :</label>
+      <input type="text" formControlName="nom" id="nom" class="form-control"
+             [ngClass]="{ 'is-invalid': submitted && form['nom'].errors }" />
+      <div *ngIf=" form['nom'].errors" class="invalid-feedback">
+        <div *ngIf="form['nom'].errors['required']">
+          Name is required
+        </div>
+
+      </div>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <div class="form-group mt-3">
+      <label for="prenom">Vorname :</label>
+      <input type="text" id="prenom" formControlName="prenom"  class="form-control"
+             [ngClass]="{ 'is-invalid': submitted && form['prenom'].errors }" />
+      <div *ngIf="submitted && form['prenom'].errors" class="invalid-feedback">
+        <div *ngIf="form['prenom'].errors['required']">
+          Vorname  ist erforderlich
+        </div>
+      </div>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Geburstdatum</mat-label>
+        <input matInput [ngxMatDatetimePicker]="$any(pickerFrom)"  placeholder="Geburstdatum" formControlName="dateNaissance">
+
+
+        <mat-datepicker-toggle matSuffix [for]="$any(pickerFrom)"></mat-datepicker-toggle>
+
+        <ngx-mat-datetime-picker #pickerFrom [enableMeridian]="true"></ngx-mat-datetime-picker>
+      </mat-form-field>
+    </div>
+  </mat-grid-tile>
+
+  <mat-grid-tile>
+    <div class="form-group mt-3">
+      <label for="nationalite">Nationalität :</label>
+      <input type="text" id="nationalite" formControlName="nationalite"  class="form-control"
+             [ngClass]="{ 'is-invalid': submitted && form['nationalite'].errors }" />
+      <div *ngIf="submitted && form['nationalite'].errors" class="invalid-feedback">
+        <div *ngIf="form['nationalite'].errors['required']">
+          Nationalität  ist erforderlich
+        </div>
+      </div>
+    </div>
+  </mat-grid-tile>
+
+
+
+  <mat-grid-tile>
+    <div class="form-group mt-3">
+      <label for="profession">Beruf :</label>
+      <input type="text" id="profession" formControlName="profession"  class="form-control"
+             [ngClass]="{ 'is-invalid': submitted && form['profession'].errors }" />
+      <div *ngIf="submitted && form['profession'].errors" class="invalid-feedback">
+        <div *ngIf="form['profession'].errors['required']">
+          Beruf  ist erforderlich
+        </div>
+      </div>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <div class="form-group mt-3">
+      <label for="activiteEnParalelle">Andere Tätigkeit :</label>
+      <input type="text" id="activiteEnParalelle" formControlName="activiteEnParalelle"  class="form-control"
+             [ngClass]="{ 'is-invalid': submitted && form['activiteEnParalelle'].errors }" />
+      <div *ngIf="submitted && form['activiteEnParalelle'].errors" class="invalid-feedback">
+        <div *ngIf="form['activiteEnParalelle'].errors['required']">
+          Andere Tätigkeit  ist erforderlich
+        </div>
+      </div>
+    </div>
+  </mat-grid-tile>
+
+  <mat-grid-tile>
+    <div class="form-group mt-3">
+      <label for="quartier">Straße :</label>
+      <input type="text" id="quartier" formControlName="quartier"  class="form-control"
+             [ngClass]="{ 'is-invalid': submitted && form['quartier'].errors }" />
+      <div *ngIf="submitted && form['quartier'].errors" class="invalid-feedback">
+        <div *ngIf="form['quartier'].errors['required']">
+          Straße  ist erforderlich
+        </div>
+      </div>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <div class="form-group mt-3">
+      <label for="numTel">Telefonnummer :</label>
+      <input type="text" id="numTel" formControlName="numTel"  class="form-control"
+             [ngClass]="{ 'is-invalid': submitted && form['numTel'].errors }" />
+      <div *ngIf="form['numTel'].touched && form['numTel'].invalid" class="alert alert-danger">
+        <div *ngIf="form['numTel'].errors?.['required']">Geben Sie ein gültige Telefonnummer ein !</div>
+        <div *ngIf="form['numTel'].errors?.['pattern']">Die Zahl muss mindestens 10 sein !</div>
+      </div>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <div class="form-group mt-3">
+      <label for="email">Email :</label>
+      <input type="text" id="email" formControlName="email"  class="form-control"
+             [ngClass]="{ 'is-invalid': submitted && form['email'].errors }" />
+      <div *ngIf="form['email'].touched && form['email'].invalid" class="alert alert-danger">
+        <div *ngIf="form['email'].errors?.['required']">Email ist einzugeben !</div>
+        <div *ngIf="form['email'].errors?.['pattern']">Das Format der Email ist ungültig !</div>
+      </div>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <div class="form-group mt-3">
+      <label for="numCni">Personalausweisnummer :</label>
+      <input type="number" id="numCni" formControlName="numCni"  class="form-control"
+             [ngClass]="{ 'is-invalid': submitted && form['numCni'].errors }" />
+      <div *ngIf="form['numCni'].touched && form['numCni'].invalid" class="alert alert-danger">
+        <div *ngIf="form['numCni'].errors?.['required']">
+          Personalausweisnummer  ist erforderlich
+        </div>
+      </div>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <div class="form-group mt-3">
+      <label for="diplomeEleve">Höhste Schulabschluss :</label>
+      <input type="text" id="diplomeEleve" formControlName="diplomeEleve"  class="form-control"
+             [ngClass]="{ 'is-invalid': submitted && form['diplomeEleve'].errors }" />
+      <div *ngIf="submitted && form['diplomeEleve'].errors" class="invalid-feedback">
+        <div *ngIf="form['diplomeEleve'].errors['required']">
+          Höhste Schulabschluss  ist erforderlich
+        </div>
+      </div>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Anfangszeit der Tätigkeit</mat-label>
+        <input matInput [ngxMatDatetimePicker]="$any(pickerTo)"  placeholder="Anfangszeit der Tätigkeit" formControlName="dateDebutActiviteOuCours">
+        <mat-datepicker-toggle matSuffix [for]="$any(pickerTo)"></mat-datepicker-toggle>
+
+        <ngx-mat-datetime-picker #pickerTo [enableMeridian]="true"></ngx-mat-datetime-picker>
+      </mat-form-field>
+    </div>
+  </mat-grid-tile>
+
+
+
+  <mat-grid-tile>
+    <div class="form-group mt-3">
+      <label for="username">Benutzername :</label>
+      <input type="text" id="username" formControlName="username"  class="form-control"
+             [ngClass]="{ 'is-invalid': submitted && form['username'].errors }" />
+      <div *ngIf="submitted && form['username'].errors" class="invalid-feedback">
+        <div *ngIf="form['username'].errors['required']">
+          Benutzername  ist erforderlich
+        </div>
+      </div>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <div class="form-group mt-3">
+      <label for="password">Passwort :</label>
+      <input type="password" id="password" formControlName="password"  class="form-control"
+             [ngClass]="{ 'is-invalid': submitted && form['password'].errors }" />
+      <div *ngIf="submitted && form['password'].errors" class="invalid-feedback">
+        <div *ngIf="form['password'].errors['required']">
+          Passwort  ist erforderlich
+        </div>
+      </div>
+    </div>
+  </mat-grid-tile>
+
+
+  <mat-grid-tile>
+    <div class="form-group">
+      <label for="isActived" >Konto Aktivieren ? :</label>
+      <div class="mt-3 d-flex justify-content-between">
+        <input  type="button"  (click)="onActivieren()" id="isActived" [ngClass]="kontoAktivieren  ?'btn btn-success' : 'btn btn-danger'"  [value]="valeur" />
+      </div>
+    </div>
+  </mat-grid-tile>
+
+
+  <mat-grid-tile>
+    <div>
+
+      <mat-form-field *ngIf="listeRolle | async  as rolle" >
+        <mat-label class="col-lg-6">Welche Berechtigung(en) dieser Person ?</mat-label>
+
+        <mat-select  placeholder="Berechtigung geben"   formControlName="roles" multiple>
+          <mat-option value="{{itemRolle.role}}" *ngFor="let itemRolle of rolle">{{itemRolle.role}}</mat-option>
+
+        </mat-select>
+        <mat-error *ngIf="gemeinsameInfosFormGroup.controls['roles'].hasError('required')">
+          {{ gemeinsameInfosFormGroup.controls['roles'].errors | json }}
+
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="2">
+    <mat-label style="color : red;"> Wichtig : Stellen Sie sicher, dass die von Ihnen eingegebene Daten richtig sind, bevor Sie sie bestätigen.
+      <a href="http://datenSchutz.dre">Unserer Datenschutz</a>
+    </mat-label>
+
+  </mat-grid-tile>
+
+
+
+</mat-grid-list>

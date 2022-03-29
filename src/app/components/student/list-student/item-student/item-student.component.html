@@ -1,0 +1,33 @@
+<tr *ngIf="student">
+  <td>{{student.nom}}</td>
+  <td>{{student.prenom}}</td>
+  <td>{{student.dateNaissance | date : 'dd.MM.YYYY'}}</td>
+  <td>{{student.dateDebutActiviteOuCours | date : 'dd.MM.YYYY'}}</td>
+  <td>{{student.numTel}}</td>
+  <td>{{libelleSpr}}</td>
+  <td>{{libelleNiv}}</td>
+
+
+  <td>
+    <button type="button"  class="btn btn-success" [routerLink]="['update', student.username]">
+      <span >Update</span>
+
+
+    </button>
+  </td>
+
+  <td>
+    <button  class="btn btn-danger"  (click)="onDeleteStudent(student.username)">
+      <span class="fa fa-trash-o">Löchen</span>
+    </button>
+
+  </td>
+  <td>
+    <button  class="btn btn-info"  [routerLink]="['details', student.username]">
+      <span class="fa fa-edit">Details</span>
+    </button>
+
+  </td>
+
+</tr>
+

@@ -1,0 +1,8 @@
+<table class="table table-striped table-dark" *ngIf="sprachen | async as sprachenData">
+  <thead>
+      <th> <h4> Libelle</h4></th> <th> <h4> IntensivKurs</h4></th>  <th> <h4> Code</h4></th><th> <h4> Handlungen</h4></th>
+  </thead>
+
+  <app-item-sprache [sprache]="sprache" *ngFor="let sprache of sprachenData"  style="display: contents"></app-item-sprache>
+
+</table>

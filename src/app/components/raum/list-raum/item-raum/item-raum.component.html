@@ -1,0 +1,28 @@
+<tr *ngIf="raum">
+  <td>{{raum.nom_raume}}</td>
+  <td >{{raum.nbre_places}} Plätze</td>
+  <td>{{raum.standort}}</td>
+  <td>{{raum.codeRaum}}</td>
+  <td>
+    <button type="button"  class="btn btn-success" [routerLink]="['update', raum.codeRaum]">
+      <span >Update</span>
+
+
+    </button>
+  </td>
+
+  <td>
+    <button  class="btn btn-danger"  (click)="onDeleteRaum(raum.codeRaum)">
+      <span class="fa fa-trash-o">Löchen</span>
+    </button>
+
+  </td>
+  <td>
+    <button  class="btn btn-info"  [routerLink]="['details', raum.codeRaum]">
+      <span class="fa fa-edit">Details</span>
+    </button>
+
+  </td>
+
+</tr>
+

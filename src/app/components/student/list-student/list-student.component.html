@@ -1,0 +1,9 @@
+<table class="table table-striped table-dark" *ngIf="studenten | async as studentenData">
+  <thead>
+  <th> <h4> Name</h4></th> <th> <h4> Vorname</h4></th>  <th> <h4> Geburstdatum</h4></th> <th> <h4> Anfang des Kurses</h4></th>  <th> <h4> Telefonnummer</h4></th>
+  <th> <h4> Sprache</h4></th> <th> <h4> Niveau</h4></th> <th> <h4> Handlungen</h4></th>
+  </thead>
+
+  <app-item-student [student]="student" *ngFor="let student of studentenData"  style="display: contents"></app-item-student>
+
+</table>

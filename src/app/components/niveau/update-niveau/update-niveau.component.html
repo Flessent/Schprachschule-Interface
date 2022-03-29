@@ -1,0 +1,70 @@
+<div class="container col-lg-6"  *ngIf="updateNiveauForm">
+  <h1 class="text-center">Update neues Niveaus</h1>
+  <div class="card" >
+    <div class="card-body">
+      <form class="form-group" [formGroup]="updateNiveauForm"  (ngSubmit)="onUpdateNiveau()">
+        <div class="form-group">
+          <label for="libelle">Name des Niveaus</label>
+          <input type="text" formControlName="libelle" id="libelle" class="form-control"
+                 [ngClass]="{ 'is-invalid': submitted && form['libelle'].errors }" />
+          <div *ngIf="submitted && form['libelle'].errors" class="invalid-feedback">
+            <div *ngIf="form['libelle'].errors['required']">
+              Field is required
+            </div>
+
+          </div>
+        </div>
+
+        <div class="form-group mt-3">
+          <label for="prix">Price</label>
+          <input type="number" id="prix" formControlName="prix"  class="form-control"
+                 [ngClass]="{ 'is-invalid': submitted && form['prix'].errors }" />
+          <div *ngIf="submitted && form['prix'].errors" class="invalid-feedback">
+            <div *ngIf="form['prix'].errors['required']">
+              Price  ist erforderlich
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label>Angabe des Zeitraums</mat-label>
+            <mat-date-range-input [formGroup]="updateNiveauForm" [rangePicker]="picker">
+              <input matStartDate formControlName="date_debut" placeholder="Start date">
+              <input matEndDate formControlName="date_fin" placeholder="End date">
+            </mat-date-range-input>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+
+            <mat-error *ngIf="form['date_debut'].errors?.['matStartDateInvalid']">Invalid start date</mat-error>
+            <mat-error *ngIf="form['date_fin'].errors?.['matEndDateInvalid']">Invalid end date</mat-error>
+          </mat-form-field>
+        </div>
+        <div >
+
+          <mat-form-field *ngIf="sprachs" >
+            <mat-select  placeholder="Angabe der Sprachen"  [formGroup]="updateNiveauForm"  formControlName="sprache" multiple>
+              <mat-option value="{{itemSprache}}" *ngFor="let itemSprache of sprachs">{{itemSprache}}</mat-option>
+
+            </mat-select>
+            <mat-error *ngIf="updateNiveauForm.controls['sprache'].hasError('required')">
+              {{ updateNiveauForm.controls['sprache'].errors | json }}
+
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+
+
+
+
+
+        <div class="mt-3 d-flex justify-content-between">
+          <button type="submit" [disabled]="!updateNiveauForm.valid"  class="btn btn-success">Bestätigen</button>
+
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

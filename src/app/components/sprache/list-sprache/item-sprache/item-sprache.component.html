@@ -1,0 +1,27 @@
+<tr *ngIf="sprache">
+  <td>{{sprache.libelle}}</td>
+  <td >{{intensive}}</td>
+
+  <td>
+    <button type="button"  class="btn btn-success" [routerLink]="['update', sprache.codeSprache]">
+      <span >Update</span>
+
+
+    </button>
+  </td>
+
+  <td>
+    <button  class="btn btn-danger"  (click)="onDeleteSprache(sprache.codeSprache)">
+      <span class="fa fa-trash-o">Löchen</span>
+    </button>
+
+  </td>
+  <td>
+    <button  class="btn btn-info"  [routerLink]="['details', sprache.codeSprache]">
+      <span class="fa fa-edit">Details</span>
+    </button>
+
+  </td>
+
+</tr>
+

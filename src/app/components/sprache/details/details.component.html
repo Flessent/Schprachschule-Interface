@@ -1,0 +1,9 @@
+<div> <h2> Details über eine bestimmte Sprache </h2> </div>
+<div *ngIf="spracheData">
+  <div>Code von der Sprache : {{ spracheData?.codeSprache }}</div>
+  <div>Sprache: {{ spracheData?.libelle }}</div>
+  <div>Entsprechende Niveaus: {{ spracheNiveau }}</div>
+  <div>IntensiveKurs: {{ spracheData?.intensive }}</div>
+</div>
+<div><a [routerLink]="['/willkommen/sprache/liste-sprache']">Zurück zur Liste der Sprachen</a></div>
+
